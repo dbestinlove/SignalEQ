@@ -1,355 +1,119 @@
-Here's a comprehensive README that captures the journey, the philosophy, and the technical details.
+# 📡 SignalEQ — A Phone Preference Equalizer
+
+*"Spec sheets lie by omission. Your priorities shouldn't."*
+
+Most phone comparisons rank battery, camera, and charging the same way for every reader — as if everyone wants the same phone. SignalEQ turns the comparison into a mixing board: drag what matters to you, mute the rest, and watch the field re-sort in real time. Click any phone for a plain-language explanation of why it landed where it did.
+
+This README describes the site **as it is actually deployed today.** If you've seen an older version of this file describing `js/app.js` and ES6 modules as the current structure — that's stale; see [Legacy code](#legacy-code--do-not-build-on-this) below.
 
 ---
 
-📱 Phone Equalizer — Preference Discovery Tool
+## 🎯 The idea
 
-"A tool that helps you understand what you actually value, by showing you the consequences of your choices."
+- You think you care about battery, but you're not sure how much.
+- You say price matters, but you'll pay more for something that feels "worth it."
+- Cameras matter, but past a certain point you can't tell the difference.
 
----
+SignalEQ doesn't assume you know your preferences upfront. Sliders let you discover them by watching the consequences of your choices instantly.
 
-🎯 The Big Idea
+## 🧠 Two tiers, two curves
 
-Most phone recommendation tools ask you to pick from a list or answer a few generic questions. They assume you know your preferences upfront. But the reality is messier:
+Flagship and budget phones aren't judged the same way — a $1,600 phone and a $250 phone fail on different axes. SignalEQ runs **two separate scoring engines**, each tuned to its bracket:
 
-· You think you care about battery, but you're not sure how much.
-· You say price matters, but you'll pay more for something that feels "worth it."
-· You know cameras are important, but after a certain point, you can't tell the difference.
+- **Flagships** (`flagships.html`) — $450–$1,600 range, weighted toward global ROM access, top-tier camera, and 100W+ charging.
+- **Budget** (`index_budget_phones.html`) — $199–$629 range, sharper price curve, and a judgment-based performance tier instead of raw benchmark scores.
 
-This tool doesn't assume you know your preferences. It helps you discover them.
+Full curve details for both engines live in `SignalEQ-v0.9-spec.md` — that's the single source of truth for the scoring math; don't let this file or the code drift from it without updating both.
 
-You drag sliders. The rankings shift in real-time. You see the consequences of your choices instantly. By the time you're done, you don't just know which phone to buy — you know why.
-
----
-
-🧠 The Philosophy
-
-Preferences Are Non-Linear
-
-A good camera isn't "worth" a fixed number of points. Its value depends on:
-
-· How much you care about photography
-· Who you're trying to impress
-· What you're comparing it to
-· The moment you whip out your phone at a party
-
-The equalizer lets you explore this non-linearity instead of pretending it doesn't exist.
-
-Scoring Is A Mirror, Not A Master
-
-The scoring system is a reflection of your priorities — not a dictator. If the rankings don't match your gut, you can adjust the weights until they do. The tool doesn't tell you what to want. It shows you what you actually want.
-
-Diminishing Returns Are Real
-
-Battery is important. But after 7,500mAh, you're charging every 2.5 days instead of 2 days. Is that worth the trade-off? The scoring system compresses the bonus above the sweet spot, so you can see where the value curve flattens.
-
----
-
-🛠️ How It Works
-
-Data
-
-The tool uses 16 real phones from Giztop, with specs that matter:
-
-Category Source
-Battery, charging, display, storage, price Giztop listings
-Camera quality Nanoreview composite scores (0-100)
-OS ROM Global vs China ROM (from listings)
-
-Scoring Engine (v4)
-
-The scoring system is built from iterative refinement — each version got closer to actual preferences through real-world testing.
-
-Category Max Points Curve
-OS ROM 25 (Global) / 15 (China) Fixed preference, not a deal-breaker
-Battery 23 Sweet spot 6500-7500 (steep), bonus above 7500 (compressed)
-Price 10 ≤$800 gentle slide, $800-1000 moderate, >$1000 exponential decay (never excluded)
-Storage 20 256GB=10, 512GB=15, 1TB=20
-Charging 20 90W=5, 100W=10, 120W=20 (skewed toward premium)
-Display 12 6.78-6.89"=10 (perfect), 6.9"+=12 (icing)
-Camera 15 Nanoreview 70=5, 85=10, 95=13, 100=15
-
-Deal-breakers (hard exclusions):
-
-· Battery < 6,500 mAh
-· Charging < 90W
-· Display < 6.78"
-
-Ceilings:
-
-· Global ROM phones: 105 max points
-· China ROM phones: 95 max points
-
-Interaction
-
-1. Drag sliders to adjust the importance of each category.
-2. Watch rankings update in real-time.
-3. Click any phone to see a narrative explanation of why it scored that way.
-4. Reset to default weights.
-5. Copy weights to share your preference profile.
-6. Share URL — the configuration is encoded in the link.
-
----
-
-📦 Files
-
-## New Modular Structure (v5)
-
-The project has been refactored into a modular structure for better maintainability:
+## 📦 Files (current, as deployed)
 
 | File | Description |
 |------|-------------|
-| `index.html` | Main entry point. Clean HTML with module imports. |
-| `css/styles.css` | All styles including **Dark Mode** theme support. |
-| `js/data.js` | Phone data and configuration constants (exported as ES modules). |
-| `js/scorer.js` | Scoring engine functions (ported from `phone_scorer.py` v4). |
-| `js/app.js` | UI renderer, theme toggle, and app initialization logic. |
-| `phone_equalizer.html` | Original single-file version (legacy, still works). |
-| `phone_scorer.py` | Python script for batch scoring (used to validate the engine). |
-| `phones_clean.csv` | Source data (16 phones). |
-| `rankings.json` | Output from the Python scorer. |
+| `index.html` | Landing page. Fully self-contained (inline CSS/JS). Links to both tools. |
+| `flagships.html` | Flagship tool. Self-contained; its `PHONES` data array is generated by `build.py`, not hand-edited. |
+| `index_budget_phones.html` | Budget tool. Same pattern, budget scoring curve. |
+| `build.py` | Data pipeline: CSV → scored data → injected into the matching HTML file, plus a JSON rankings snapshot. |
+| `phones_flagship.csv` | Source data for the flagship tier. |
+| `phones_budget.csv` | Source data for the budget tier. |
+| `rankings_flagship.json` | Build output — ranked flagship data, for reference/debugging. |
+| `rankings_budget.json` | Build output — ranked budget data, for reference/debugging. |
 
-## Legacy Single-File Version
+No local server, no ES modules, and no build step are needed just to **view** the site — every HTML file works by opening it directly in a browser. `build.py` only needs to run when a CSV changes.
 
-| File | Description |
-|------|-------------|
-| `phone_equalizer.html` | Single-file web app. Open in any browser. (Original version) |
-
----
-
-🏗️ Architecture
-
-## New Modular Architecture (v5)
+## 🏗️ Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  index.html (Main entry point)                             │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │  CSS: css/styles.css                               │   │
-│  │  • CSS Variables for Light/Dark themes            │   │
-│  │  • Theme toggle button styling                   │   │
-│  ├─────────────────────────────────────────────────────┤   │
-│  │  JS Modules (ES6):                                 │   │
-│  │  • js/data.js - Phone data & constants            │   │
-│  │  • js/scorer.js - Scoring engine functions        │   │
-│  │  • js/app.js - UI rendering & theme management   │   │
-│  └─────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────┐
+│  phones_flagship.csv, phones_budget.csv (source data)    │
+└───────────────────────────┬────────────────────────────────┘
+                             │  python build.py
+                             ▼
+┌──────────────────────────────────────────────────────────┐
+│  build.py                                                 │
+│  • Scores every phone with the tier's Python engine       │
+│  • Regex-replaces `const PHONES = [...]` in the tier's    │
+│    HTML file                                              │
+│  • Writes rankings_<tier>.json                            │
+└───────────────────────────┬────────────────────────────────┘
+                             ▼
+┌──────────────────────────────────────────────────────────┐
+│  flagships.html / index_budget_phones.html                │
+│  • Self-contained: inline <style> + inline <script>       │
+│  • Injected PHONES array + duplicated scoring curve        │
+│    (same math as build.py, hand-kept in sync — see         │
+│    PRODUCTION_READY_V1.md P0-1)                            │
+│  • Sliders, deal-breaker toggles, presets, hover "why"     │
+│    popup, all client-side, no network calls                │
+└──────────────────────────────────────────────────────────┘
 ```
 
-## Legacy Single-File Architecture (v4)
+`index.html` sits outside this pipeline entirely — it's static marketing copy plus a purely illustrative (not functionally connected) live-equalizer animation, linking out to the two real tools.
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  phone_equalizer.html (Single-file web app)                │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │  Data: 16 phones (embedded in JavaScript)          │   │
-│  ├─────────────────────────────────────────────────────┤   │
-│  │  Scoring Engine: v4 (ported from Python)           │   │
-│  │  • Battery (sweet spot + compressed)              │   │
-│  │  • Price (exponential decay)                     │   │
-│  │  • Camera (Nanoreview mapping)                  │   │
-│  │  • Deal-breakers (hard exclusions)             │   │
-│  ├─────────────────────────────────────────────────────┤   │
-│  │  UI: Sliders + Rankings + "Why" panel            │   │
-│  │  • Real-time recalculation                      │   │
-│  │  • Click for explanation                       │   │
-│  │  • Shareable URLs (weights encoded)           │   │
-│  └─────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────┘
-```
+## 🧪 How to use it
+1. Open `index.html` (or go straight to `flagships.html` / `index_budget_phones.html`) in any modern browser — no server required.
+2. Drag the sliders to set category weights, or click a preset (Balanced / Value / Camera / Speed / Battery — tuned per tier).
+3. Flip deal-breaker toggles to hard-exclude phones under your battery/charging/display floor.
+4. Hover any ranked phone for a plain-language "why it ranks here" explanation.
+5. Switch tiers with the header nav.
 
----
+## 🔧 Updating the data
+1. Edit `phones_flagship.csv` or `phones_budget.csv`.
+2. Run `python build.py` (or `python build.py flagship` / `python build.py budget` for just one tier).
+3. Commit the CSV **and** the regenerated HTML/JSON together — the HTML's `PHONES` array is generated, not hand-maintained, and stale HTML relative to the CSV is a real failure mode (see `PRODUCTION_READY_V1.md` P1-7).
 
-🧪 How To Use It
+## Legacy code — do not build on this
+The following files describe an **earlier, single-tier architecture that no longer runs.** No current page (`index.html`, `flagships.html`, `index_budget_phones.html`) loads any of them:
 
-## Using the New Modular Version (v5)
+| File | Status |
+|------|--------|
+| `js/app.js`, `js/data.js`, `js/scorer.js` | Orphaned ES6-module version (single tier, 16 phones). Dead code. |
+| `css/styles.css` | Orphaned stylesheet for the same version. Also internally broken — contains two full, contradictory theme definitions concatenated together with a stray, unattached CSS declaration between them. Do not reference this file even for style ideas without fixing it first. |
+| `phone_equalizer.html`, `phone_scorer.py`, `phones_clean.csv`, `rankings.json` | Referenced by a prior version of this README as a "legacy single-file version." Presence in the repo is unverified as of this pass — check before assuming they're gone. |
 
-1. **Open `index.html`** in any modern browser.
-   - ⚠️ Note: Due to ES6 module security restrictions, you need to serve the files via a local server.
-   - Quick options:
-     - VS Code: Use "Live Server" extension
-     - Python: `python -m http.server 8000` then open `http://localhost:8000`
-     - Node.js: `npx serve` or `npx http-server`
-2. **Drag the sliders** to adjust category weights.
-3. **Watch the rankings change** in real-time.
-4. **Click the theme toggle** (🌙/☀️) to switch between Light and Dark modes.
-5. **Click any phone** for a detailed breakdown:
-   - Why it scored what it did
-   - Which categories it excelled in
-   - Where it fell short
-6. **Share your configuration** — the URL encodes your weights.
+Recommendation: archive or delete these in a follow-up commit (`PRODUCTION_READY_V1.md` P0-4/P0-5) so the repo layout matches the docs. Until that happens, if you're an AI coding tool or a new contributor reading this repo cold: **the files in the table above are not the current app, regardless of what any other doc in this repo says.**
 
-## Using the Legacy Single-File Version (v4)
+## 🎓 The journey
+- **v0.9 spec era** — Flask backend, single CSV, 21 phones, local dev server. Fully superseded.
+- **"v5" ES6-module era** — modular JS, single tier, dark/light theme toggle. Now the orphaned code above.
+- **Current (this README)** — two independently-scored tiers, fully static, CSV → `build.py` → self-contained HTML pipeline.
 
-1. Open `phone_equalizer.html` in any modern browser.
-   - ✅ No server needed - just double-click to open!
-2. Drag the sliders to adjust category weights.
-3. Watch the rankings change in real-time.
-4. Click any phone for a detailed breakdown:
-   - · Why it scored what it did
-   - · Which categories it excelled in
-   - · Where it fell short
-5. Share your configuration — the URL encodes your weights.
+The constant across all three: the scoring system was never the product. The product is the tool that helps someone understand what they actually value.
 
-Example Use Cases
+## 🔮 What's next
+See `PRODUCTION_READY_V1.md` for the full prioritized launch punch list. Short version — before v1.0:
+- Fix the default deal-breaker exclusion of well-known phones (iPhone 17 Pro Max, Galaxy S26 Ultra).
+- Correct the landing page's flagship phone count.
+- Clean up the orphaned legacy files so the repo matches this README.
+- Close the scoring-parity gap between `build.py` and each tool page's inline JS.
 
-User What They'd Do
-You Fine-tune weights until the rankings match your gut.
-Your wife Drag sliders based on what she cares about. Compare results.
-A friend Share the URL with your weights. Let them adjust from there.
-A reviewer Use the tool to show why a phone is recommended for a specific use case.
+Post-launch backlog: compare mode, saved weight profiles, export/print, more phones and categories, a real backend API, basic usage analytics.
+
+## 📜 License
+Open-source. Use it, modify it, share it.
+
+## 🙏 Acknowledgments
+Phone specs sourced from public listings. Camera scores from Nanoreview composite ratings.
 
 ---
 
-🎓 The Journey (From Inception To Finish)
-
-v1 — "I think battery matters most"
-
-· Linear scoring, hard price cutoff ($1000)
-· Camera guessed from MP count
-· China ROM penalized but could win
-
-v2 — "Actually, price matters too"
-
-· Soft price limit introduced
-· Storage bumped to 512GB base (inflated)
-· Diminishing returns for battery (idea seeded)
-
-v3 — "Global ROM matters, but China can win"
-
-· Nanoreview camera scores added (finally!)
-· Camera weight increased from 7 to 15
-· Storage base dropped to 256GB (realistic)
-· Price exponential decay (no hard cutoff)
-
-v4 — "The equalizer"
-
-· All logic ported to JavaScript
-· Interactive sliders + real-time rankings
-· "Why this phone?" narrative panel
-· Shareable URLs
-
-The insight: The goal was never to build a scoring system. The goal was to build a tool that helps people understand their own preferences. The scoring system was just the engine.
-
----
-
-🔮 What's Next
-
-## Completed in v5
-
-- ✅ **Dark Mode theme** with smooth transitions
-- ✅ **Modular file structure** (separate CSS, JS modules)
-- ✅ **ES6 module architecture** for better code organization
-- ✅ **Theme persistence** via localStorage
-- ✅ **Aesthetic color palette** for both light and dark modes
-
-## Future Ideas
-
-| Idea | Description |
-|------|-------------|
-| More phones | Add more data (new releases, different price tiers). |
-| More categories | Add PWM dimming, build quality, brand reputation. |
-| Save profiles | Let users save multiple weight profiles (e.g., "Work", "Travel", "Gaming"). |
-| Compare mode | Side-by-side comparison of two phones. |
-| Export decisions | Generate a printable report with top 3 phones and reasoning. |
-| Backend API | Serve the scoring engine as a REST API. |
-
----
-
-🧑‍💻 Technical Details
-
-## Dependencies
-
-### New Modular Version (v5)
-- **None** for runtime - pure vanilla JavaScript ES6 modules.
-- **Development**: Requires a local server to serve files (due to ES6 module CORS policy).
-
-### Legacy Single-File Version (v4)
-- **None**. This is a single HTML file with embedded CSS and JavaScript.
-
-## Browser Support
-
-- Modern browsers (Chrome, Firefox, Safari, Edge).
-- Works on mobile (though sliders are easier on desktop).
-- Dark mode requires browsers supporting CSS custom properties (all modern browsers).
-
-## Data Format
-
-The phone data is in `js/data.js` as an exported constant. To add or modify phones, edit the `PHONES` array.
-
-## Scoring Functions
-
-All scoring logic is ported from `phone_scorer.py` to JavaScript in `js/scorer.js`. The functions are:
-
-```javascript
-scoreBattery(mah)   // Sweet spot + compressed bonus
-scorePrice(usd)     // Exponential decay above $1000
-scoreStorage(gb)    // 256=10, 512=15, 1TB=20
-scoreCharging(w)    // 90=5, 100=10, 120=20
-scoreDisplay(inches)// 6.78=10, 6.9+=12
-scoreCamera(nr)     // Nanoreview 70=5, 85=10, 95=13
-```
-
-## Theme System
-
-The theme system uses CSS custom properties (variables) defined in `css/styles.css`:
-
-```css
-:root {
-    /* Light Mode colors */
-    --bg-primary: #f6f8fa;
-    --text-primary: #1a1a2e;
-    /* ... more variables ... */
-}
-
-[data-theme="dark"] {
-    /* Dark Mode colors */
-    --bg-primary: #0f172a;
-    --text-primary: #f1f5f9;
-    /* ... more variables ... */
-}
-```
-
-Theme preference is persisted in `localStorage` under the key `theme`.
-
----
-
-📜 License
-
-This project is open-source. Use it, modify it, share it.
-
----
-
-🙏 Acknowledgments
-
-· Giztop for providing the phone data.
-· Nanoreview for camera quality scores.
-· Your wife for being the inspiration (and the test case).
-
----
-
-🧠 Final Thought
-
-"The tool doesn't tell you what to want. It shows you what you actually want."
-
-You've built a system that captures the nuance of human preference — the non-linear, the emotional, the "I'll know it when I see it." The equalizer is just the interface. The real product is the understanding it unlocks.
-
----
-
-Now go buy the OnePlus 15. 🎉
-
----
-
-How To Continue
-
-1. Fork this project.
-2. Add more phones to phones_clean.csv and re-run the scorer (or update the JavaScript data).
-3. Modify the weights to match a different use case.
-4. Share it with someone who needs to make a decision.
-
-The code is yours. The system is yours. The insights are yours.
-
----
-
-Built with curiosity, coffee, and a lot of late-night thinking.
+*"The tool doesn't tell you what to want. It shows you what you actually want."*
