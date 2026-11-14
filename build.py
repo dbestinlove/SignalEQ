@@ -163,17 +163,22 @@ def load_phones(csv_path):
     with open(csv_path, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
+            # camera_quality may be blank when a phone has no Nanoreview composite yet.
+            # Score the camera as 0 and warn, rather than crashing the whole tier build.
+            cam_raw = (row.get("camera_quality") or "").strip()
             phone = {
                 "model": row["model"],
                 "bat": int(row["battery_mAh"]),
                 "chg": int(row["charging_W"]),
-                "cam": int(row["camera_quality"]),
+                "cam": int(cam_raw) if cam_raw else 0,
                 "disp": float(row["display_size_inches"]),
                 "stor": int(row["storage_gb"]),
                 "ram": int(row["ram_gb"]),
                 "price": int(row["price_usd"]),
                 "os": "global" if "global" in row["os_type"].lower() else "china",
             }
+            if not cam_raw:
+                print(f"⚠️  [{row['model']}] camera_quality is blank — scoring camera as 0 until a Nanoreview rating is added.")
             if "perf" in row and row["perf"] not in (None, ""):
                 phone["perf"] = int(row["perf"])
             phones.append(phone)

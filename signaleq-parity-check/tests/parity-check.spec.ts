@@ -212,14 +212,20 @@ describe('engines (real subprocesses, real shipped files)', () => {
     expect(Object.keys(ace).sort()).toEqual(['bat', 'cam', 'chg', 'disp', 'os', 'perf', 'price', 'stor'])
   })
 
-  it('parses the shipped PHONES arrays (25 flagship, 20 budget)', () => {
-    expect(extractPhones(readFileSync(join(SIGNALEQ_ROOT, 'flagships.html'), 'utf8'))).toHaveLength(25)
-    expect(extractPhones(readFileSync(join(SIGNALEQ_ROOT, 'index_budget_phones.html'), 'utf8'))).toHaveLength(20)
+  it('parses the shipped PHONES arrays and matches the CSV row counts', () => {
+    // Derive expected counts from the committed CSVs so adding a phone does not need a test edit,
+    // while still catching a stale HTML array (the build.py-did-not-run failure mode).
+    const csvRows = (file: string) =>
+      readFileSync(join(SIGNALEQ_ROOT, file), 'utf8').trim().split(/\r?\n/).length - 1
+    expect(extractPhones(readFileSync(join(SIGNALEQ_ROOT, 'flagships.html'), 'utf8')))
+      .toHaveLength(csvRows('phones_flagship.csv'))
+    expect(extractPhones(readFileSync(join(SIGNALEQ_ROOT, 'index_budget_phones.html'), 'utf8')))
+      .toHaveLength(csvRows('phones_budget.csv'))
   })
 
   it('throws a descriptive error when the inline base() copy is missing', () => {
     expect(() => extractBaseFunction('<html><script>const PHONES = [];</script></html>'))
-      .toThrow(/function base\(p\) not found/)
+      .toThrow(/function base\(p\)` not found/)
   })
 })
 
@@ -246,7 +252,7 @@ describe('plugin lifecycle', () => {
     expect(plugin.name).toBe('signaleq-parity-check')
     expect(plugin.inject).toEqual(['tools'])
     expect(typeof plugin.apply).toBe('function')
-    // Config is a validated Schemastery schema, not a plain object.
-    expect(typeof plugin.Config).toBe('object')
+    // Config is a validated Schemastery schema (a callable function), not a plain object.
+    expect(typeof plugin.Config).toBe('function')
   })
 })

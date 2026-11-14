@@ -1,0 +1,322 @@
+[
+  {
+    "model": "OnePlus Ace 6T",
+    "os": "china",
+    "score": 103.9,
+    "specs": {
+      "model": "OnePlus Ace 6T",
+      "bat": 8300,
+      "chg": 100,
+      "cam": 82,
+      "disp": 6.83,
+      "stor": 256,
+      "ram": 12,
+      "price": 429,
+      "os": "china"
+    }
+  },
+  {
+    "model": "OnePlus Ace 6",
+    "os": "china",
+    "score": 103.5,
+    "specs": {
+      "model": "OnePlus Ace 6",
+      "bat": 7800,
+      "chg": 120,
+      "cam": 77,
+      "disp": 6.83,
+      "stor": 256,
+      "ram": 12,
+      "price": 479,
+      "os": "china"
+    }
+  },
+  {
+    "model": "OnePlus Turbo 6X Pro",
+    "os": "china",
+    "score": 99.5,
+    "specs": {
+      "model": "OnePlus Turbo 6X Pro",
+      "bat": 8000,
+      "chg": 80,
+      "cam": 68,
+      "disp": 6.78,
+      "stor": 256,
+      "ram": 12,
+      "price": 319,
+      "os": "china"
+    }
+  },
+  {
+    "model": "OnePlus Turbo 6",
+    "os": "china",
+    "score": 98.1,
+    "specs": {
+      "model": "OnePlus Turbo 6",
+      "bat": 9000,
+      "chg": 80,
+      "cam": 74,
+      "disp": 6.78,
+      "stor": 256,
+      "ram": 12,
+      "price": 429,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Redmi K90 Max",
+    "os": "china",
+    "score": 96.8,
+    "specs": {
+      "model": "Redmi K90 Max",
+      "bat": 8550,
+      "chg": 100,
+      "cam": 77,
+      "disp": 6.83,
+      "stor": 256,
+      "ram": 12,
+      "price": 499,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Honor power 2",
+    "os": "china",
+    "score": 92.9,
+    "specs": {
+      "model": "Honor power 2",
+      "bat": 10080,
+      "chg": 80,
+      "cam": 72,
+      "disp": 6.79,
+      "stor": 256,
+      "ram": 12,
+      "price": 499,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Redmi K90",
+    "os": "china",
+    "score": 91.8,
+    "specs": {
+      "model": "Redmi K90",
+      "bat": 7100,
+      "chg": 100,
+      "cam": 79,
+      "disp": 6.59,
+      "stor": 256,
+      "ram": 12,
+      "price": 439,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Realme 15 Pro",
+    "os": "china",
+    "score": 91.6,
+    "specs": {
+      "model": "Realme 15 Pro",
+      "bat": 7000,
+      "chg": 80,
+      "cam": 70,
+      "disp": 6.8,
+      "stor": 256,
+      "ram": 12,
+      "price": 389,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Realme GT 8",
+    "os": "china",
+    "score": 90.9,
+    "specs": {
+      "model": "Realme GT 8",
+      "bat": 7000,
+      "chg": 100,
+      "cam": 83,
+      "disp": 6.79,
+      "stor": 256,
+      "ram": 12,
+      "price": 499,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Redmi K90 Pro Max",
+    "os": "china",
+    "score": 90.3,
+    "specs": {
+      "model": "Redmi K90 Pro Max",
+      "bat": 7560,
+      "chg": 100,
+      "cam": 82,
+      "disp": 6.9,
+      "stor": 256,
+      "ram": 12,
+      "price": 629,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Honor 400",
+    "os": "china",
+    "score": 89.8,
+    "specs": {
+      "model": "Honor 400",
+      "bat": 7200,
+      "chg": 80,
+      "cam": 81,
+      "disp": 6.55,
+      "stor": 256,
+      "ram": 12,
+      "price": 439,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Honor 600 SUPER Edition",
+    "os": "china",
+    "score": 85.0,
+    "specs": {
+      "model": "Honor 600 SUPER Edition",
+      "bat": 8600,
+      "chg": 80,
+      "cam": 87,
+      "disp": 6.57,
+      "stor": 256,
+      "ram": 12,
+      "price": 599,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Redmi Note 14 Pro Plus",
+    "os": "china",
+    "score": 79.6,
+    "specs": {
+      "model": "Redmi Note 14 Pro Plus",
+      "bat": 6200,
+      "chg": 90,
+      "cam": 69,
+      "disp": 6.67,
+      "stor": 256,
+      "ram": 12,
+      "price": 299,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Honor GT",
+    "os": "china",
+    "score": 77.1,
+    "specs": {
+      "model": "Honor GT",
+      "bat": 5300,
+      "chg": 80,
+      "cam": 75,
+      "disp": 6.7,
+      "stor": 256,
+      "ram": 12,
+      "price": 399,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Xiaomi 17T",
+    "os": "china",
+    "score": 76.3,
+    "specs": {
+      "model": "Xiaomi 17T",
+      "bat": 7000,
+      "chg": 67,
+      "cam": 88,
+      "disp": 6.59,
+      "stor": 256,
+      "ram": 12,
+      "price": 549,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Realme 12 Pro Plus",
+    "os": "china",
+    "score": 72.7,
+    "specs": {
+      "model": "Realme 12 Pro Plus",
+      "bat": 5000,
+      "chg": 67,
+      "cam": 66,
+      "disp": 6.7,
+      "stor": 256,
+      "ram": 12,
+      "price": 339,
+      "os": "china"
+    }
+  },
+  {
+    "model": "OPPO Reno 16",
+    "os": "china",
+    "score": 72.3,
+    "specs": {
+      "model": "OPPO Reno 16",
+      "bat": 6700,
+      "chg": 80,
+      "cam": 85,
+      "disp": 6.32,
+      "stor": 256,
+      "ram": 12,
+      "price": 599,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Redmi Note 14",
+    "os": "china",
+    "score": 68.6,
+    "specs": {
+      "model": "Redmi Note 14",
+      "bat": 5110,
+      "chg": 45,
+      "cam": 64,
+      "disp": 6.67,
+      "stor": 256,
+      "ram": 12,
+      "price": 199,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Nothing Phone 3A Pro",
+    "os": "china",
+    "score": 65.7,
+    "specs": {
+      "model": "Nothing Phone 3A Pro",
+      "bat": 5000,
+      "chg": 45,
+      "cam": 77,
+      "disp": 6.77,
+      "stor": 256,
+      "ram": 12,
+      "price": 449,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Redmagic 10 Air",
+    "os": "china",
+    "score": 65.3,
+    "specs": {
+      "model": "Redmagic 10 Air",
+      "bat": 6000,
+      "chg": 80,
+      "cam": 61,
+      "disp": 6.8,
+      "stor": 256,
+      "ram": 12,
+      "price": 539,
+      "os": "china"
+    }
+  }
+]

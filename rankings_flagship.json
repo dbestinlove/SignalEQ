@@ -1,0 +1,418 @@
+[
+  {
+    "model": "OnePlus 15",
+    "os": "global",
+    "score": 107.8,
+    "specs": {
+      "model": "OnePlus 15",
+      "bat": 7300,
+      "chg": 120,
+      "cam": 92,
+      "disp": 6.78,
+      "stor": 1024,
+      "ram": 16,
+      "price": 889,
+      "os": "global"
+    }
+  },
+  {
+    "model": "OnePlus 15",
+    "os": "global",
+    "score": 100.7,
+    "specs": {
+      "model": "OnePlus 15",
+      "bat": 7300,
+      "chg": 120,
+      "cam": 92,
+      "disp": 6.78,
+      "stor": 256,
+      "ram": 12,
+      "price": 679,
+      "os": "global"
+    }
+  },
+  {
+    "model": "Redmagic 11 Pro Plus",
+    "os": "global",
+    "score": 96.8,
+    "specs": {
+      "model": "Redmagic 11 Pro Plus",
+      "bat": 7500,
+      "chg": 120,
+      "cam": 77,
+      "disp": 6.85,
+      "stor": 256,
+      "ram": 12,
+      "price": 899,
+      "os": "global"
+    }
+  },
+  {
+    "model": "Honor WIN",
+    "os": "china",
+    "score": 96.3,
+    "specs": {
+      "model": "Honor WIN",
+      "bat": 10000,
+      "chg": 120,
+      "cam": 86,
+      "disp": 6.82,
+      "stor": 256,
+      "ram": 12,
+      "price": 649,
+      "os": "china"
+    }
+  },
+  {
+    "model": "OnePlus Ace6 Ultra",
+    "os": "china",
+    "score": 92.5,
+    "specs": {
+      "model": "OnePlus Ace6 Ultra",
+      "bat": 8600,
+      "chg": 120,
+      "cam": 80,
+      "disp": 6.79,
+      "stor": 256,
+      "ram": 12,
+      "price": 659,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Xiaomi 17 Pro Max",
+    "os": "china",
+    "score": 89.2,
+    "specs": {
+      "model": "Xiaomi 17 Pro Max",
+      "bat": 7500,
+      "chg": 100,
+      "cam": 94,
+      "disp": 6.9,
+      "stor": 512,
+      "ram": 12,
+      "price": 899,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Redmagic 11S Pro Plus",
+    "os": "china",
+    "score": 89.0,
+    "specs": {
+      "model": "Redmagic 11S Pro Plus",
+      "bat": 7500,
+      "chg": 120,
+      "cam": 77,
+      "disp": 6.85,
+      "stor": 512,
+      "ram": 16,
+      "price": 1299,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Honor WIN RT",
+    "os": "china",
+    "score": 87.6,
+    "specs": {
+      "model": "Honor WIN RT",
+      "bat": 10000,
+      "chg": 100,
+      "cam": 86,
+      "disp": 6.83,
+      "stor": 256,
+      "ram": 12,
+      "price": 549,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Redmi K90 Max",
+    "os": "china",
+    "score": 83.6,
+    "specs": {
+      "model": "Redmi K90 Max",
+      "bat": 8550,
+      "chg": 100,
+      "cam": 77,
+      "disp": 6.83,
+      "stor": 256,
+      "ram": 12,
+      "price": 499,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Realme GT8 Pro",
+    "os": "china",
+    "score": 83.4,
+    "specs": {
+      "model": "Realme GT8 Pro",
+      "bat": 7000,
+      "chg": 120,
+      "cam": 86,
+      "disp": 6.79,
+      "stor": 256,
+      "ram": 12,
+      "price": 639,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Iqoo 15 Ultra",
+    "os": "china",
+    "score": 82.2,
+    "specs": {
+      "model": "Iqoo 15 Ultra",
+      "bat": 7400,
+      "chg": 100,
+      "cam": 84,
+      "disp": 6.85,
+      "stor": 512,
+      "ram": 16,
+      "price": 899,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Iqoo Neo 11",
+    "os": "china",
+    "score": 81.3,
+    "specs": {
+      "model": "Iqoo Neo 11",
+      "bat": 7500,
+      "chg": 100,
+      "cam": 74,
+      "disp": 6.82,
+      "stor": 256,
+      "ram": 12,
+      "price": 459,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Iqoo 15T",
+    "os": "china",
+    "score": 80.9,
+    "specs": {
+      "model": "Iqoo 15T",
+      "bat": 8000,
+      "chg": 100,
+      "cam": 79,
+      "disp": 6.82,
+      "stor": 256,
+      "ram": 12,
+      "price": 699,
+      "os": "china"
+    }
+  },
+  {
+    "model": "OPPO Find X9 Ultra",
+    "os": "global",
+    "score": 80.3,
+    "specs": {
+      "model": "OPPO Find X9 Ultra",
+      "bat": 7050,
+      "chg": 100,
+      "cam": 96,
+      "disp": 6.83,
+      "stor": 256,
+      "ram": 12,
+      "price": 1599,
+      "os": "global"
+    }
+  },
+  {
+    "model": "Honor Power 2",
+    "os": "china",
+    "score": 76.7,
+    "specs": {
+      "model": "Honor Power 2",
+      "bat": 10080,
+      "chg": 80,
+      "cam": 81,
+      "disp": 6.79,
+      "stor": 256,
+      "ram": 12,
+      "price": 499,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Iqoo 15",
+    "os": "china",
+    "score": 74.2,
+    "specs": {
+      "model": "Iqoo 15",
+      "bat": 7000,
+      "chg": 100,
+      "cam": 89,
+      "disp": 6.82,
+      "stor": 256,
+      "ram": 12,
+      "price": 649,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Realme GT8",
+    "os": "china",
+    "score": 73.7,
+    "specs": {
+      "model": "Realme GT8",
+      "bat": 7000,
+      "chg": 100,
+      "cam": 81,
+      "disp": 6.79,
+      "stor": 256,
+      "ram": 12,
+      "price": 499,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Iqoo Z11 Turbo",
+    "os": "china",
+    "score": 71.8,
+    "specs": {
+      "model": "Iqoo Z11 Turbo",
+      "bat": 7600,
+      "chg": 100,
+      "cam": 75,
+      "disp": 6.59,
+      "stor": 256,
+      "ram": 12,
+      "price": 469,
+      "os": "china"
+    }
+  },
+  {
+    "model": "OPPO Find X9 Ultra",
+    "os": "china",
+    "score": 71.4,
+    "specs": {
+      "model": "OPPO Find X9 Ultra",
+      "bat": 7050,
+      "chg": 100,
+      "cam": 96,
+      "disp": 6.83,
+      "stor": 256,
+      "ram": 12,
+      "price": 1199,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Vivo X500 Pro Max",
+    "os": "global",
+    "score": 71.3,
+    "specs": {
+      "model": "Vivo X500 Pro Max",
+      "bat": 7800,
+      "chg": 90,
+      "cam": 0,
+      "disp": 6.85,
+      "stor": 256,
+      "ram": 12,
+      "price": 1599,
+      "os": "global"
+    }
+  },
+  {
+    "model": "Xiaomi 17 Ultra",
+    "os": "china",
+    "score": 69.4,
+    "specs": {
+      "model": "Xiaomi 17 Ultra",
+      "bat": 6800,
+      "chg": 90,
+      "cam": 96,
+      "disp": 6.9,
+      "stor": 512,
+      "ram": 12,
+      "price": 999,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Xiaomi 17",
+    "os": "china",
+    "score": 63.3,
+    "specs": {
+      "model": "Xiaomi 17",
+      "bat": 7000,
+      "chg": 100,
+      "cam": 86,
+      "disp": 6.3,
+      "stor": 256,
+      "ram": 12,
+      "price": 649,
+      "os": "china"
+    }
+  },
+  {
+    "model": "Vivo X300 Ultra",
+    "os": "china",
+    "score": 62.2,
+    "specs": {
+      "model": "Vivo X300 Ultra",
+      "bat": 6600,
+      "chg": 100,
+      "cam": 94,
+      "disp": 6.82,
+      "stor": 256,
+      "ram": 12,
+      "price": 1099,
+      "os": "china"
+    }
+  },
+  {
+    "model": "iPhone 17 Pro Max",
+    "os": "global",
+    "score": 62.0,
+    "specs": {
+      "model": "iPhone 17 Pro Max",
+      "bat": 5088,
+      "chg": 45,
+      "cam": 95,
+      "disp": 6.9,
+      "stor": 256,
+      "ram": 12,
+      "price": 1199,
+      "os": "global"
+    }
+  },
+  {
+    "model": "Galaxy S26 Ultra",
+    "os": "global",
+    "score": 61.9,
+    "specs": {
+      "model": "Galaxy S26 Ultra",
+      "bat": 5000,
+      "chg": 67,
+      "cam": 93,
+      "disp": 6.9,
+      "stor": 256,
+      "ram": 12,
+      "price": 1099,
+      "os": "global"
+    }
+  },
+  {
+    "model": "Vivo X300 Pro",
+    "os": "china",
+    "score": 60.0,
+    "specs": {
+      "model": "Vivo X300 Pro",
+      "bat": 6510,
+      "chg": 90,
+      "cam": 97,
+      "disp": 6.78,
+      "stor": 256,
+      "ram": 12,
+      "price": 799,
+      "os": "china"
+    }
+  }
+]
