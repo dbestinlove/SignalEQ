@@ -1,6 +1,0 @@
-node_modules/
-.npm-cache/
-lib/
-*.log
-# Machine-specific harness overlay (copy cordis.example.yml instead)
-cordis.yml

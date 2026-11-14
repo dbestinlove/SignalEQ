@@ -26,3 +26,23 @@ node_modules/
 .idea/
 # Local harness/agent config
 .dsh/
+
+# ─────────────────────────────────────────────────────────────────
+# PUBLIC REPO POLICY: only the deployable site is tracked.
+# Tracked files are exactly: index.html, flagships.html,
+# index_budget_phones.html, .gitignore.
+# Everything below is local-only development content. It stays on
+# disk for this workspace/terminal but must never be committed.
+# ─────────────────────────────────────────────────────────────────
+/.agents/
+/build.py
+/phones_flagship.csv
+/phones_budget.csv
+/rankings_flagship.json
+/rankings_budget.json
+/README.md
+/SPEC.md
+/PRODUCTION_READY_V1.md
+/docs/
+/research/
+/signaleq-parity-check/
