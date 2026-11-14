@@ -1,0 +1,12 @@
+# Example web overlay that loads the signaleq-parity-check plugin into the harness.
+#
+# Copy this file to `cordis.yml` (ignored by git) and replace the placeholders with
+# the absolute path to your SignalEQ checkout. The plugin path must be absolute.
+#
+# Load with:  pnpm dsh web --patch ./cordis.yml   (from this directory), or point
+# the overlay path at this file from anywhere.
+- insert:
+    - id: signaleq-parity-check
+      name: '/absolute/path/to/SignalEQ/signaleq-parity-check/src/index.ts'
+      config:
+        projectRoot: '/absolute/path/to/SignalEQ'
