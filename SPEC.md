@@ -67,7 +67,7 @@ Two independent curves, tuned per price bracket. **Each currently exists in more
 **Confirmed impact (verified 2026-11-13 against the shipped `flagships.html`):** with default settings, iPhone 17 Pro Max (5088mAh, 45W) and Galaxy S26 Ultra (5000mAh, 67W) each trip *two* flagship deal-breakers simultaneously and are always excluded on first load. See `PRODUCTION_READY_V1.md` P0-2.
 
 ## Current data snapshot (counted directly from the shipped files)
-- Flagship tier: **26 phones** in the `PHONES` array: the original 25 plus the vivo X500 Pro Max (global, 7800mAh / 90W / 6.85" / 256GB / 12GB / $1,599, camera 95). Two intentional variant duplicates (OPPO Find X9 Ultra china/global, OnePlus 15 256GB/1TB) still render with identical display names.
+- Flagship tier: **26 phones** in the `PHONES` array: the original 25 plus the vivo X500 Pro Max (global, 7800mAh / 90W / 6.85" / 256GB / 12GB / $1,599, camera 95 per NanoReview, marked approximate). Two intentional variant duplicates (OPPO Find X9 Ultra china/global, OnePlus 15 256GB/1TB) still render with identical display names.
 - Budget tier: **20 phones**, no duplicates.
 - Landing page (`index.html`) says **"26 current-gen flagships"** — this matches the 26 actually shipped. Budget's stated "20 budget and mid-range phones" is correct.
 - `phones_budget.csv` carries no `perf` column (see the budget data gap above).
@@ -96,12 +96,12 @@ Carried forward from the original v0.9 DoD, updated for the current architecture
 
 ## Status (update this each session)
 - Last updated: 2026-11-13
-- Current state: two-tier static site (`index.html` + `flagships.html` + `index_budget_phones.html` + `build.py`) is functionally complete for both tiers. The 2026-11-13 cleanup is done: `js/` and `css/` and the legacy boundary skill are removed, `phones_flagship.csv` / `phones_budget.csv` and both rankings JSON files are restored and committed, the landing page's flagship count is corrected to 26, and the docs (this file, `README.md`, `PRODUCTION_READY_V1.md`) have been rewritten to match the real repo layout. A parity suite now exists in `signaleq-parity-check/` (13/13 green) but is not wired into CI. The vivo X500 Pro Max row was added the same day; its camera score (95, owner-supplied) was filled in immediately after, so `build.py` no longer warns for it and the blank-tolerant path remains only for future rows.
+- Current state: two-tier static site (`index.html` + `flagships.html` + `index_budget_phones.html` + `build.py`) is functionally complete for both tiers. The 2026-11-13 cleanup is done: `js/` and `css/` and the legacy boundary skill are removed, `phones_flagship.csv` / `phones_budget.csv` and both rankings JSON files are restored and committed, the landing page's flagship count is corrected to 26, and the docs (this file, `README.md`, `PRODUCTION_READY_V1.md`) have been rewritten to match the real repo layout. A parity suite now exists in `signaleq-parity-check/` (13/13 green) but is not wired into CI. The vivo X500 Pro Max row was added the same day; its camera score (95 from NanoReview, marked approximate) was filled in immediately after, so `build.py` no longer warns for it and the blank-tolerant path remains only for future rows.
 - Next single task: fix the default deal-breaker exclusion of iPhone 17 Pro Max / Galaxy S26 Ultra (P0-2).
 - Known issues:
   - Scoring logic is still duplicated between `build.py` and each tier page's inline JS; the `signaleq-parity-check` suite exists but nothing runs it automatically (P0-1/P1-2).
   - Budget `perf` data is missing: no `perf` column in `phones_budget.csv`, so the 20-point performance category scores 0 for all 20 budget phones (P1-8).
-  - The vivo X500 Pro Max camera score (95) is owner-supplied, not backed by a published Nanoreview composite; treat it as such if the score is ever audited (P1-9, resolved as data-complete).
+  - The vivo X500 Pro Max camera score (95) is the NanoReview composite, which NanoReview marks approximate (insufficient test results); treat it as softer than the well-tested rows (P1-9, resolved as data-complete).
   - The "why it ranks here" popup is hover-only and invisible on touch devices (P1-4).
   - Duplicate display names: "OPPO Find X9 Ultra" and "OnePlus 15" each appear twice with no visual distinction (P1-1).
   - `build.py` has no CSV schema validation; a malformed row fails ungracefully (P1-3).
