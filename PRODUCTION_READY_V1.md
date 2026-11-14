@@ -74,7 +74,7 @@ Not a runtime risk (nothing loaded it), but it was a trap for anyone reaching fo
 
 So the 20-point Performance category (default slider weight 20) contributes nothing to any budget phone's score. The rankings themselves still work, but a whole category is inert and the "Speed" preset has no effect. **Fix:** add a `perf` column with manual 1–10 ratings for all 20 budget rows (human judgment — daily-use smoothness and light gaming, not benchmark scores), then rerun `python build.py`. The committed `rankings_*.json` files store total scores plus raw spec inputs rather than per-category scores, so this gap won't appear in the JSON — only in the tool's ranking behavior and any UI that surfaces category scores.
 
-**P1-9 — vivo X500 Pro Max has no camera score yet — OPEN (data gap).** The row added 2026-11-13 (`Vivo X500 Pro Max,7800,90,,6.85,256,12,1599,global ROM`) leaves `camera_quality` blank because none of the sources used for the spec (Giztop, GSMArena, vivo) publish a Nanoreview composite. `build.py` now tolerates the blank: it scores the camera as 0 and prints a warning naming the row. Consequence: the X500 Pro Max totals **71.3** and ranks provisionally low until a Nanoreview rating is entered. **Fix:** add the score, rerun `python build.py`. Source URLs and per-field confidence live in `research/vivo_x500_pro_max.md`.
+**P1-9 — vivo X500 Pro Max camera score — RESOLVED (2026-11-13).** The row added earlier that day initially left `camera_quality` blank because none of the sources used for the spec (Giztop, GSMArena, vivo) published a Nanoreview composite, and `build.py` was made to tolerate that (score 0 + warning). The project owner then supplied `camera_quality = 95`; the CSV now reads `Vivo X500 Pro Max,7800,90,95,6.85,256,12,1599,global ROM`, `build.py` was rerun, and the phone scores **84.3** (9th of 26). The blank-tolerant code path stays for future rows. Source URLs and per-field confidence live in `research/vivo_x500_pro_max.md`; the 95 itself is owner-supplied and was not independently sourced.
 
 ---
 
@@ -98,7 +98,7 @@ So the 20-point Performance category (default slider weight 20) contributes noth
 - [ ] Test on a real mobile viewport — confirm the "why" popup is reachable somehow (P1-4)
 - [ ] Confirm iPhone 17 Pro Max / Galaxy S26 Ultra behavior matches whatever P0-2 decision was made
 - [ ] Confirm budget Performance is either filled in or deliberately shipped as a documented 0 (P1-8)
-- [ ] Confirm the vivo X500 Pro Max camera score is filled in or deliberately shipped as documented 0 (P1-9)
+- [x] vivo X500 Pro Max camera score filled in (95, owner-supplied) and `build.py` rerun — verified 2026-11-13 (P1-9)
 - [ ] Rerun `python build.py` against the committed CSVs and diff against committed HTML/JSON — should be zero diff (verified idempotent 2026-11-13; P1-7)
 - [ ] Hand-verify 3 scores per tier against the on-page total (original spec's Definition of Done #3)
 - [ ] Check all internal links: `index.html` → both tools, and the header preset nav on both tool pages
@@ -115,4 +115,4 @@ So the 20-point Performance category (default slider weight 20) contributes noth
 5. Ship v1.0.
 6. Work the remaining P1 backlog (P1-1 duplicate names, P1-3 CSV validation, P1-4 touch popup, P1-5 analytics, P1-6 preview asset) roughly in that order.
 
-**Done in the 2026-11-13 cleanup:** P0-3, P0-4, P0-5, P0-1 interim (dead JS copy deleted), P1-2 partial (parity suite exists and is now 13/13 green after fixing two pre-existing test bugs), P1-7 data half (CSVs + rankings JSON committed). **Also on 2026-11-13:** the vivo X500 Pro Max row was added (global variant); its camera score is pending (P1-9).
+**Done in the 2026-11-13 cleanup:** P0-3, P0-4, P0-5, P0-1 interim (dead JS copy deleted), P1-2 partial (parity suite exists and is now 13/13 green after fixing two pre-existing test bugs), P1-7 data half (CSVs + rankings JSON committed). **Also on 2026-11-13:** the vivo X500 Pro Max row was added (global variant) and its camera score (95, owner-supplied) was filled in the same day (P1-9 resolved).

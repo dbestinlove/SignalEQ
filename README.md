@@ -40,7 +40,7 @@ Full curve details for both engines live in `SPEC.md` — that's the single sour
 | `SPEC.md` | Spec & status: scoring curves, data snapshot, v1.0 definition of done, known issues. |
 | `PRODUCTION_READY_V1.md` | Prioritized launch punch list (P0/P1/P2). |
 | `docs/marketing/` | TikTok launch plan and the first three video scripts. |
-| `research/` | Provenance notes for data additions: source URLs, per-field confidence, and unresolved fields (e.g. the vivo X500 Pro Max row). |
+| `research/` | Provenance notes for data additions: source URLs, per-field confidence, and any field left blank at research time. |
 | `signaleq-parity-check/` | Dev tooling: a vitest suite that runs `build.py`'s scoring engines against the inline `base()` copies in both tool pages and diffs every category. Optional/local, not CI-wired. |
 | `.agents/skills/` | Repo-scoped agent skills: build-pipeline discipline and scoring-parity procedure. |
 
